@@ -1,3 +1,5 @@
+var express = require('express');
+
 function send_message(phone) {
     var user_phone_number = phone;//수신 전화번호 기입
     var resultCode = 404;
