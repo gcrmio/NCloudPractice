@@ -66,7 +66,7 @@ app.get("/", function(req, res){
     res.send("Hellooooooo");
 })
 
-app.get('/sms/:phone', (req, res) => {
+app.post('/sms/:phone', (req, res) => {
     console.log("==================================");
     const paramObj = req.params;
     send_message(paramObj.phone);
