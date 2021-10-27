@@ -90,7 +90,7 @@ const pool = new Pool({
 });
 
 const query = {
-  text: 'INSERT INTO target_send(FirstName, LastName, Mobile) VALUES($1, $2, $3)',
+  text: 'INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3)',
   values: ['Wonjeung', 'Choi', '01031248442'],
   
 }
