@@ -75,12 +75,16 @@ app.get('/sms/:phone', (req, res) => {
 })
 
 const {Pool, Client} = require('pg');
+const host = process.env.host;
+const user = process.env.user;
+const password = process.env.password;
+const database = process.env.database;
 
 const pool = new Pool({
-  host: 'ec2-54-210-226-209.compute-1.amazonaws.com',
-  user: 'ctycjxwmmgvcdp',
-  password: '95f79433d60722bee720b279f7cc0388d4eac6f7dc20664a73726604a6b7e62a',
-  database: 'dbaa2eu926srs2',
+  host: host,
+  user: user,
+  password: password,
+  database: database,
   port: 5432,
   ssl: {},
 });
