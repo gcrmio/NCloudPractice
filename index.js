@@ -96,7 +96,7 @@ const query = {
 }
 
 // pool.connect();
-pool.query(text, value, (err, res) =>{
+pool.query(query, (err, res) =>{
   if(err){
     console.log(err.stack)
   }
