@@ -80,20 +80,24 @@ const user = process.env.user;
 const password = process.env.password;
 const database = process.env.database;
 
-const pool = new Pool({
-  host: host,
-  user: user,
-  password: password,
-  database: database,
-  port: 5432,
-  ssl: {rejectUnauthorized: false},
-});
+app.get('/create', (req, res) => {
+  console.log("==================================");
 
-const query = {
-  text: 'INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3)',
-  values: ['Wonjeung', 'Choi', '01031248442'],
-  
-}
+
+  const pool = new Pool({
+    host: host,
+    user: user,
+    password: password,
+    database: database,
+    port: 5432,
+    ssl: {rejectUnauthorized: false},
+  });
+
+  const query = {
+    text: 'INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3)',
+    values: ['Wonjeung', 'Choi', '01031248442'],
+    
+  }
 
 // pool.connect();
 pool.query(query, (err, res) =>{
@@ -104,6 +108,11 @@ pool.query(query, (err, res) =>{
     console.log(res.rows[0]);
   }
 })
+res.send("Create complete!");
+})
+
+
+
 
 // pool.query('SELECT * FROM target_send', (err, res) => {
   // if(!err) console.log(res);
