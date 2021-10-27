@@ -86,7 +86,7 @@ const pool = new Pool({
   password: password,
   database: database,
   port: 5432,
-  ssl: {},
+  ssl: {rejectUnauthorized: false},
 });
 
 pool.connect();
