@@ -89,17 +89,15 @@ const pool = new Pool({
   ssl: {rejectUnauthorized: false},
 });
 
-console.log('1==========');
-pool.connect();
-console.log('2==========');
-pool.query('INSERT INTO target_send VALUES( FirstName, LastName, Mobile)', ['Wonjeung','Choi','01031248442'], (err, res) => {
+// pool.connect();
+pool.query(
+  'INSERT INTO target_send VALUES( $1, $2, $3)', ['Wonjeung','Choi','01031248442'], (err, res) => {
   console.log(res); // Hello World!
   pool.end();
 });
-console.log('3==========');
-pool.query('SELECT * FROM target_send', (err, res) => {
-  if(!err) console.log(res);
-  else console.log(err);
-  pool.end();
-})
-console.log('4==========');
+
+// pool.query('SELECT * FROM target_send', (err, res) => {
+  // if(!err) console.log(res);
+  // else console.log(err);
+  // pool.end();
+// })
