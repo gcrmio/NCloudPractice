@@ -122,7 +122,7 @@ app.get('/dbSelect', (req, res) => {
   try {
     console.log("DBSELECT=======================================");
     dbSelect();
-    res.send('DB Select complete!');
+    res.send('DB Select Complete!');
   } catch (error) {
     console.log('There was an error!');
   }
