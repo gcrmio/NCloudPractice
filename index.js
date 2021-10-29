@@ -140,10 +140,12 @@ function dbSelect(){
         var lastname = row.lastname;
         var mobile = row.mobile;
         console.log('name= '+firstname+' '+lastname+', mobile='+mobile+`\n`);
+        console.log('length of firstname= '+firstname.length());
+        console.log('length of lastname= '+lastname.length());
+        console.log('length of mobile= '+mobile.length());
       }
       console.log('*************************************************************');
       console.log(res.rows);
-      console.log('TYPEOF = ' + typeof(res.rows));
     }
   })
 }
