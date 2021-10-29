@@ -134,7 +134,11 @@ function dbSelect(){
     if(err){
       console.log(err.stack);
     } else {
-      console.log(res.rows);
+      //console.log(res.rows);
+      var data = JSON.parse(res.body);
+      for(const item of data.items){
+        console.log('Name: '+item.firstname+item.lastname+`\n`);
+      }
     }
   })
 }
