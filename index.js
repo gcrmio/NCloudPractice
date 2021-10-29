@@ -1,6 +1,7 @@
 var express = require('express');
 var CryptoJS = require('crypto-js');
 var request = require('request');
+var pg = requrie('pg');
 
 function send_message(phone) {
     var user_phone_number = phone;
@@ -74,48 +75,24 @@ app.get('/sms/:phone', (req, res) => {
     console.log("send message done");
 })
 
-const {Pool, Client} = require('pg');
-const host = process.env.host;
-const user = process.env.user;
-const password = process.env.password;
-const database = process.env.database;
-
-app.get('/create', (req, res) => {
-  console.log("==================================");
-
-
-  const pool = new Pool({
-    host: host,
-    user: user,
-    password: password,
-    database: database,
-    port: 5432,
-    ssl: {rejectUnauthorized: false},
-  });
-
-  const query = {
-    text: 'INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3)',
-    values: ['Wonjeung', 'Choi', '01031248442'],
-    
+//PG Setup
+const dbconfig = {
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
+  port: process.env.port,
+  ssl: {
+    rejectUnauthorized: false
   }
+}
 
-// pool.connect();
-pool.query(query, (err, res) =>{
+const client = new pg.Client(dbconfig);
+client.connect(err =>{
   if(err){
-    console.log(err.stack)
+    console.log('Failed to connect db ' + err);
+  } else {
+    console.log('Connect to db done!');
   }
-  else{
-    console.log(res.rows[0]);
-  }
+
 })
-res.send("Create complete!");
-})
-
-
-
-
-// pool.query('SELECT * FROM target_send', (err, res) => {
-  // if(!err) console.log(res);
-  // else console.log(err);
-  // pool.end();
-// })
