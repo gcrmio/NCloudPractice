@@ -129,7 +129,7 @@ app.get('/dbSelect', (req, res) => {
 })
 
 function dbSelect(){
-  const sql = `SELECT id, firstname, lastname, mobile FROM target_send`
+  const sql = `SELECT sid, firstname, lastname, mobile FROM target_send`
   client.query(sql, (err, res) => {
     if(err){
       console.log(err.stack);
