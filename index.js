@@ -142,7 +142,7 @@ function dbSelect(){
         console.log('name= '+firstname+' '+lastname+', mobile='+mobile+`\n`);
       }
       console.log('*************************************************************');
-      
+      console.log(res.rows);
     }
   })
 }
