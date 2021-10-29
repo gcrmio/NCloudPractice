@@ -139,10 +139,16 @@ function dbSelect(){
         var firstname = row.firstname;
         var lastname = row.lastname;
         var mobile = row.mobile;
-        console.log('name= '+firstname+' '+lastname+', mobile='+mobile+`\n`);
+        var sb = row.sb;
+        var msg = row.msg;
+        console.log('name= '+firstname+' '+lastname+', mobile='+mobile);
+        console.log('--sb:'+`\n`+sb);
+        console.log('--msg:'+`\n`+msg);
         console.log('length of firstname= '+firstname.length);
         console.log('length of lastname= '+lastname.length);
         console.log('length of mobile= '+mobile.length);
+        console.log('length of sb= '+sb.length);
+        console.log('length of msg= '+msg.length);
       }
       console.log('*************************************************************');
       console.log(res.rows);
