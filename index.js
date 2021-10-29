@@ -135,10 +135,12 @@ function dbSelect(){
       console.log(err.stack);
     } else {
       //console.log(res.rows);
+      for(const row of res.rows){
+        console.log('name= '+row.firstname+row.lastname);
+      }
       console.log(res);
       console.log('*************************************************************');
-      var data = JSON.parse(res.rows);
-      console.log(data);
+      
     }
   })
 }
