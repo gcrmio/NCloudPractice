@@ -143,6 +143,7 @@ function dbSelect(){
       }
       console.log('*************************************************************');
       console.log(res.rows);
+      console.log('TYPEOF = ' + typeof(res.rows));
     }
   })
 }
