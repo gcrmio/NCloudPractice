@@ -118,8 +118,23 @@ function dbInsert(){
   });
 }
 
+app.get('/dbSelect', (req, res) => {
+  try {
+    console.log("DBSELECT=======================================");
+    dbSelect();
+    res.send('DB Select complete!');
+  } catch (error) {
+    console.log('There was an error!');
+  }
+})
 
-// client.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res);
-//   client.end();
-// });
+function dbSelect(){
+  const sql = `SELECT id, firstname, lastname, mobile FROM target_send`
+  client.query(sql, (err, res) => {
+    if(err){
+      console.log(err.stack);
+    } else {
+      console.log(res);
+    }
+  })
+}
