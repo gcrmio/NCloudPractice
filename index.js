@@ -96,7 +96,7 @@ client.connect(err =>{
   }
 })
 
-const sql = `INSERT INTO target_send('firstname', 'lastname', 'mobile') VALUES($1, $2, $3) RETURNING *`;
+const sql = `INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3) RETURNING *`;
 const values = ['Wonjeung', 'Choi', '01031248442'];
 client.query(sql, values, (err, res) => {
   if(err){
