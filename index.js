@@ -137,7 +137,7 @@ function dbSelect(){
       //console.log(res.rows);
       console.log(res);
       console.log('*************************************************************');
-      var data = JSON.parse(res.body);
+      var data = JSON.parse(res.rows);
       console.log(data);
     }
   })
