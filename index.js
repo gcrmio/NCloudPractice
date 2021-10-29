@@ -95,3 +95,8 @@ client.connect(err =>{
     console.log('Connect to db done!');
   }
 })
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res);
+  client.end();
+});
