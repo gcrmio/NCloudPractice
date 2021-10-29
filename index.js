@@ -86,7 +86,7 @@ const dbconfig = {
     rejectUnauthorized: false
   }
 }
-
+console.log('PG Connect ==============================');
 const client = new pg.Client(dbconfig);
 client.connect(err =>{
   if(err){
@@ -96,7 +96,17 @@ client.connect(err =>{
   }
 })
 
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
-  client.end();
+const sql = `INSERT INTO target_send('firstname', 'lastname', 'mobile') VALUES($1, $2, $3) RETURNING *`;
+const values = ['Wonjeung', 'Choi', '01031248442'];
+client.query(sql, values, (err, res) => {
+  if(err){
+    console.log(err.stack);
+  } else {
+    console.log(res.rows[0]);
+  }
 });
+
+// client.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res);
+//   client.end();
+// });
