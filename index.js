@@ -1,7 +1,7 @@
 var express = require('express');
 var CryptoJS = require('crypto-js');
 var request = require('request');
-var pg = requrie('pg');
+var pg = require('pg');
 
 function send_message(phone) {
     var user_phone_number = phone;
@@ -94,5 +94,4 @@ client.connect(err =>{
   } else {
     console.log('Connect to db done!');
   }
-
 })
