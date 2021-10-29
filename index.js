@@ -148,7 +148,9 @@ function dbSelect(){
         console.log('length of lastname= '+lastname.length);
         console.log('length of mobile= '+mobile.length);
         console.log('length of sb= '+sb.length);
-        console.log('length of msg= '+msg.length);
+        /*
+         console.log('length of msg= '+msg.length);
+         */
       }
       console.log('*************************************************************');
       console.log(res.rows);
