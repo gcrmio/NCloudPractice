@@ -129,16 +129,16 @@ app.get('/dbSelect', (req, res) => {
 })
 
 function dbSelect(){
-  const sql = `SELECT sid, firstname, lastname, mobile, length(firstname) AS length_firstname, length(lastname) AS length_lastname, length(mobile) AS length_mobile FROM target_send`
+  const sql = `SELECT sid, firstname, lastname, mobile FROM target_send`
   client.query(sql, (err, res) => {
     if(err){
       console.log(err.stack);
     } else {
       //console.log(res.rows);
+      console.log(res);
+      console.log('*************************************************************');
       var data = JSON.parse(res.body);
-      for(const item of data.items){
-        console.log('Name: '+item.firstname+item.lastname+`\n`);
-      }
+      console.log(data);
     }
   })
 }
