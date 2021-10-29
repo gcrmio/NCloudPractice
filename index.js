@@ -96,15 +96,28 @@ client.connect(err =>{
   }
 })
 
-const sql = `INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3) RETURNING *`;
-const values = ['Wonjeung', 'Choi', '01031248442'];
-client.query(sql, values, (err, res) => {
-  if(err){
-    console.log(err.stack);
-  } else {
-    console.log(res.rows[0]);
+app.get('/dbInsert', (req, res) => {
+  try {
+    console.log("DBINSERT=======================================");
+    dbInsert();
+    res.send('DB Insert complete!');
+  } catch (error) {
+    console.log('There was an error!');
   }
-});
+})
+
+function dbInsert(){
+  const sql = `INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3) RETURNING *`;
+  const values = ['Wonny', 'Choi', '01031248442'];
+  client.query(sql, values, (err, res) => {
+    if(err){
+      console.log(err.stack);
+    } else {
+      console.log(res.rows[0]);
+    }
+  });
+}
+
 
 // client.query('SELECT NOW()', (err, res) => {
 //   console.log(err, res);
