@@ -136,9 +136,11 @@ function dbSelect(){
     } else {
       //console.log(res.rows);
       for(const row of res.rows){
-        console.log('name= '+row.firstname+row.lastname);
+        var firstname = row.firstname;
+        var lastname = row.lastname;
+        var mobile = row.mobile;
+        console.log('name= '+firstname+' '+lastname+', mobile='+mobile+`\n`);
       }
-      console.log(res);
       console.log('*************************************************************');
       
     }
