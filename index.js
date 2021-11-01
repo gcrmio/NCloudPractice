@@ -217,11 +217,7 @@ function dbSelect(){
 }
 
 app.get('/getResult/:messageId', (req, res) => {
-  try {
     console.log("GETRESULT=======================================");
-    get_result();
-    res.send('GET RESULT Complete!');
-  } catch (error) {
-    console.log('There was an error!');
-  }
+    const paramObj = req.params;
+    send_message(paramObj.messageId);
 })
