@@ -3,7 +3,7 @@ var CryptoJS = require('crypto-js');
 var request = require('request');
 var pg = require('pg');
 
-function send_message(mobile, msg) {
+function send_message(mobile, sb, msg) {
     var user_phone_number = mobile;
     var resultCode = 404;
     const date = Date.now().toString();
@@ -37,9 +37,10 @@ function send_message(mobile, msg) {
         "x-ncp-apigw-signature-v2": signature,
       },
       body: {
-        type: "SMS",
+        type: "MMS",
         countryCode: "82",
         from: fromMobile,
+        subject: sb,
         content: msg,
         messages: [
           { to: `${user_phone_number}`, },],
@@ -164,7 +165,7 @@ function dbSelect(){
         // mArr.push(mobile);
         // sbArr.push(sb);
         // msgArr.push(msg);
-        send_message(mobile, msg);
+        send_message(mobile, sb, msg);
       }
       // console.log('*************************************************************');
       // console.log(res.rows);
