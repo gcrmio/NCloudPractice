@@ -2,6 +2,11 @@ var express = require('express');
 var CryptoJS = require('crypto-js');
 var request = require('request');
 var pg = require('pg');
+const fnArr = [];
+const lnArr = [];
+const mArr = [];
+const sbArr = [];
+const msgArr = [];
 
 function send_message(phone) {
     var user_phone_number = phone;
@@ -67,10 +72,14 @@ app.get("/", function(req, res){
     res.send("Hellooooooo");
 })
 
-app.get('/sms/:phone', (req, res) => {
+// app.get('/sms/:phone', (req, res) => {
+  app.get('/sms/', (req, res) => {
     console.log("==================================");
-    const paramObj = req.params;
-    send_message(paramObj.phone);
+    //const paramObj = req.params;
+    for(const phone of mArr){
+      //send_message(paramObj.phone);
+      send_message(phone);
+    }
     res.send("complete!");
     console.log("send message done");
 })
@@ -130,11 +139,7 @@ app.get('/dbSelect', (req, res) => {
 
 function dbSelect(){
   const sql = `SELECT sid, firstname, lastname, mobile, sb, msg FROM target_send`
-  const fnArr = [];
-  const lnArr = [];
-  const mArr = [];
-  const sbArr = [];
-  const msgArr = [];
+
   client.query(sql, (err, res) => {
     if(err){
       console.log(err.stack);
