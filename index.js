@@ -130,6 +130,11 @@ app.get('/dbSelect', (req, res) => {
 
 function dbSelect(){
   const sql = `SELECT sid, firstname, lastname, mobile, sb, msg FROM target_send`
+  const fnArr = [];
+  const lnArr = [];
+  const mArr = [];
+  const sbArr = [];
+  const msgArr = [];
   client.query(sql, (err, res) => {
     if(err){
       console.log(err.stack);
@@ -141,19 +146,31 @@ function dbSelect(){
         var mobile = row.mobile;
         var sb = row.sb;
         var msg = row.msg;
-        console.log('name= '+firstname+' '+lastname+', mobile='+mobile);
-        console.log('--sb:'+`\n`+sb);
-        console.log('--msg:'+`\n`+msg);
-        console.log('length of firstname= '+firstname.length);
-        console.log('length of lastname= '+lastname.length);
-        console.log('length of mobile= '+mobile.length);
-        console.log('length of sb= '+sb.length);
-        /*
-         console.log('length of msg= '+msg.length);
-         */
+        // console.log('name= '+firstname+' '+lastname+', mobile='+mobile);
+        // console.log('--sb:'+`\n`+sb);
+        // console.log('--msg:'+`\n`+msg);
+        // console.log('length of firstname= '+firstname.length);
+        // console.log('length of lastname= '+lastname.length);
+        // console.log('length of mobile= '+mobile.length);
+        // console.log('length of sb= '+sb.length);
+        // console.log('length of msg= '+msg.length);
+        fnArr.push(firstname);
+        lnArr.push(lastname);
+        mArr.push(mobile);
+        sbArr.push(sb);
+        msgArr.push(msg);
       }
-      console.log('*************************************************************');
-      console.log(res.rows);
+      // console.log('*************************************************************');
+      // console.log(res.rows);
+      
     }
+    console.log('*************************************************************');
+    console.log("fnArr="+fnArr);
+    console.log("lnArr="+lnArr);
+    console.log("mArr="+mArr);
+    console.log("sbArr="+sbArr);
+    console.log("msgArr="+msgArr);
+    console.log('*************************************************************');
   })
 }
+
