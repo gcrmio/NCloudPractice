@@ -165,7 +165,14 @@ function dbSelect(){
         // mArr.push(mobile);
         // sbArr.push(sb);
         // msgArr.push(msg);
-        send_message(mobile, sb, msg);
+        try {
+          send_message(mobile, sb, msg);
+          console.log(sid+' has successfully sent');
+        } catch (error) {
+          console.log('send message error');
+        }
+        
+
       }
       // console.log('*************************************************************');
       // console.log(res.rows);
