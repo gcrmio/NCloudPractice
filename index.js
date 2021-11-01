@@ -225,7 +225,7 @@ function dbSelect(){
   })
 }
 
-app.get('/getResult', (req, res) => {
+app.get('/getResult/:messageId', (req, res) => {
   try {
     console.log("GETRESULT=======================================");
     get_result();
