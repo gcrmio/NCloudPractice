@@ -79,6 +79,8 @@ app.get("/", function(req, res){
     dbSelect();
     for(const phone of mArr){
       //send_message(paramObj.phone);
+      console.log('+++++++++++++++++++');
+      console.log(phone);
       send_message(phone);
     }
     res.send("complete!");
@@ -170,13 +172,13 @@ function dbSelect(){
       // console.log(res.rows);
       
     }
-    console.log('*************************************************************');
-    console.log("fnArr="+fnArr);
-    console.log("lnArr="+lnArr);
-    console.log("mArr="+mArr);
-    console.log("sbArr="+sbArr);
-    console.log("msgArr="+msgArr);
-    console.log('*************************************************************');
+    // console.log('*************************************************************');
+    // console.log("fnArr="+fnArr);
+    // console.log("lnArr="+lnArr);
+    // console.log("mArr="+mArr);
+    // console.log("sbArr="+sbArr);
+    // console.log("msgArr="+msgArr);
+    // console.log('*************************************************************');
   })
 }
 
