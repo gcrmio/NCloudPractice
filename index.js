@@ -76,6 +76,7 @@ app.get("/", function(req, res){
   app.get('/sms/', (req, res) => {
     console.log("==================================");
     //const paramObj = req.params;
+    dbSelect();
     for(const phone of mArr){
       //send_message(paramObj.phone);
       send_message(phone);
