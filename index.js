@@ -118,7 +118,7 @@ app.get('/dbInsert', (req, res) => {
 
 function dbInsert(){
   const sql = `INSERT INTO target_send(firstname, lastname, mobile) VALUES($1, $2, $3) RETURNING *`;
-  const values = ['Wonny', 'Choi', '01031248442'];
+  const values = ['Karl', 'Jung', '01071564823'];
   client.query(sql, values, (err, res) => {
     if(err){
       console.log(err.stack);
