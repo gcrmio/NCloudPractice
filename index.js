@@ -32,6 +32,7 @@ function get_result(messageId){
       "x-ncp-apigw-timestamp": date,
       "x-ncp-apigw-signature-v2": signature,
     },
+    body: {},
   },
     function (err, res, html) {
       if (err) console.log(err);
