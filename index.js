@@ -2,14 +2,9 @@ var express = require('express');
 var CryptoJS = require('crypto-js');
 var request = require('request');
 var pg = require('pg');
-const fnArr = [];
-const lnArr = [];
-const mArr = [];
-const sbArr = [];
-const msgArr = [];
 
-function send_message(phone) {
-    var user_phone_number = phone;
+function send_message(mobile, msg) {
+    var user_phone_number = mobile;
     var resultCode = 404;
     const date = Date.now().toString();
     const uri = process.env.SERVICE_ID;
@@ -45,7 +40,7 @@ function send_message(phone) {
         type: "SMS",
         countryCode: "82",
         from: fromMobile,
-        content: "wj-nodejs test",
+        content: msg,
         messages: [
           { to: `${user_phone_number}`, },],
       },
@@ -77,10 +72,12 @@ app.get("/", function(req, res){
     console.log("==================================");
     //const paramObj = req.params;
     dbSelect();
+
     for(const phone of mArr){
       //send_message(paramObj.phone);
       console.log('+++++++++++++++++++');
       console.log(phone);
+      
       send_message(phone);
     }
     res.send("complete!");
@@ -167,6 +164,7 @@ function dbSelect(){
         mArr.push(mobile);
         sbArr.push(sb);
         msgArr.push(msg);
+        send_message(mobile, msg);
       }
       // console.log('*************************************************************');
       // console.log(res.rows);
