@@ -37,7 +37,7 @@ function send_message(mobile, sb, msg) {
         "x-ncp-apigw-signature-v2": signature,
       },
       body: {
-        type: "MMS",
+        type: "LMS",
         countryCode: "82",
         from: fromMobile,
         subject: sb,
