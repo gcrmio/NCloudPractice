@@ -73,13 +73,13 @@ app.get("/", function(req, res){
     //const paramObj = req.params;
     dbSelect();
 
-    for(const phone of mArr){
-      //send_message(paramObj.phone);
-      console.log('+++++++++++++++++++');
-      console.log(phone);
+    // for(const phone of mArr){
+    //   //send_message(paramObj.phone);
+    //   console.log('+++++++++++++++++++');
+    //   console.log(phone);
       
-      send_message(phone);
-    }
+    //   send_message(phone);
+    // }
     res.send("complete!");
     console.log("send message done");
 })
@@ -159,11 +159,11 @@ function dbSelect(){
         // console.log('length of mobile= '+mobile.length);
         // console.log('length of sb= '+sb.length);
         // console.log('length of msg= '+msg.length);
-        fnArr.push(firstname);
-        lnArr.push(lastname);
-        mArr.push(mobile);
-        sbArr.push(sb);
-        msgArr.push(msg);
+        // fnArr.push(firstname);
+        // lnArr.push(lastname);
+        // mArr.push(mobile);
+        // sbArr.push(sb);
+        // msgArr.push(msg);
         send_message(mobile, msg);
       }
       // console.log('*************************************************************');
