@@ -8,7 +8,7 @@ function get_result(messageId){
   const uri = process.env.SERVICE_ID;
   const secretKey = process.env.NCP_SECRET_KEY;
   const accessKey = process.env.NCP_KEY;
-  const method = "GET";
+  const method = "POST";
   const url = `https://sens.apigw.ntruss.com/sms/v2/services/${uri}/messages/${message_id}`;
   const url2 = `/sms/v2/services/${uri}/messages`;
     const hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, secretKey);
