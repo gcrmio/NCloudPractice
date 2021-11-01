@@ -9,7 +9,18 @@ function get_result(messageId){
   const secretKey = process.env.NCP_SECRET_KEY;
   const accessKey = process.env.NCP_KEY;
   const method = "GET";
-  const url = `https://sens.apigw.ntruss.com/sms/v2/services/${uri}/messages/${message_id}`;
+  const url = `https://sens.apigw.ntruss.com/sms/v2/services/${uri}/messages`;
+  const url2 = `/sms/v2/services/${uri}/messages/${message_id}`;
+    const hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, secretKey);
+    hmac.update(method);
+    hmac.update(space);
+    hmac.update(url2);
+    hmac.update(newLine);
+    hmac.update(date);
+    hmac.update(newLine);
+    hmac.update(accessKey);
+    const hash = hmac.finalize();
+    const signature = hash.toString(CryptoJS.enc.Base64);
   
   request({
     method: method,
